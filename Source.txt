@@ -1,0 +1,29 @@
+
+{$CLEO .csi}
+
+thread "Coords"
+
+:Coords_1
+wait 0
+if
+10@ = 0.0 // Angle
+jf @Coords_2
+8@ = 320.0 // Center Screen Coords
+9@ = 224.0 // Center Screen Coords
+
+:Coords_2
+wait 100
+0390: load_txd_dictionary 'TXD.ETC' 
+038F: load_texture "COORDS" as 97 // Load dictionary with 0390 first 
+if and
+0063: 1@ -= 8@ // X Coordinate
+006B: 1@ *= 5@ // Y Coordinate (Distance)
+005B: 1@ += 9@ // Z Coordinate
+0063: 2@ -= 8@ // X Coordinate
+006B: 2@ *= 5@ // Y Coordinate (Distance)
+005B: 2@ += 9@ // Z Coordinate
+jf @Coords_3
+
+:Coords_3
+074B: draw_texture 97 position 1@ 2@ scale 1080.0 720.0 angle 10@ color_RGBA 255 255 255 255 
+return
