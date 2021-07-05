@@ -10,6 +10,7 @@ if
 jf @Coords_2
 8@ = 320.0 // Center Screen Coords
 9@ = 224.0 // Center Screen Coords
+5@ = 1.0 // Distance
 
 :Coords_2
 wait 100
